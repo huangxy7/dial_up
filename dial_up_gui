@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+@author: classmate lin
+@contact: 406728295@qq.com
+@file: dial_up.py
+@time: 2018/12/17 上午11:00
+@desc: 自动拨号，带界面版本
+"""
