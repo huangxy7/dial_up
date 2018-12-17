@@ -160,7 +160,7 @@ def test_connect():
 
 def login_forever(user, pwd, login_type=TELECOM, timeout=5):
     """
-    登陆，已经轮询是否断线，是则重新连接
+    登陆，以及轮询是否断线，是则重新连接
     :param user:
     :param pwd:
     :param login_type:
