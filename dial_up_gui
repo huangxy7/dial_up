@@ -7,3 +7,66 @@
 @time: 2018/12/17 上午11:00
 @desc: 自动拨号，带界面版本
 """
+import tkinter as tk
+from dial_up import login_forever
+import os
+
+
+class Application:
+
+    def __init__(self, title="拨号助手", width=400, height=300):
+        """
+        :param title: 标题
+        :param width: 宽度
+        :param height: 高度
+        """
+        self._root = tk.Tk()
+        self._root.title(title)
+        self._center_window(width, height)
+
+        self._user = tk.StringVar()
+        self._pwd = tk.StringVar()
+
+        self._header_frame = None
+        self._middle_frame = None
+        self._bottom_frame = None
+        self.setup_ui()
+        self._root.resizable(False, False)
+
+    def _center_window(self, w, h):
+        # 获取屏幕 宽、高
+        ws = self._root.winfo_screenwidth()
+        hs = self._root.winfo_screenheight()
+        # 计算 x, y 位置
+        x = (ws / 2) - (w / 2)
+        y = (hs / 2) - (h / 2)
+        self._root.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
+    def setup_ui(self):
+        self._header_frame = tk.Frame(master=self._root)
+        self._middle_frame = tk.Frame(master=self._root)
+        self._bottom_frame = tk.Frame(master=self._root)
+        self._header_frame.pack()
+        self._middle_frame.pack()
+        self._bottom_frame.pack()
+
+        tk.Label(master=self._header_frame, text="账号").grid(row=0, column=0, padx=5)
+        tk.Entry(master=self._header_frame, textvariable=self._user).grid(row=0, column=1, padx=5)
+        tk.Label(master=self._header_frame, text="密码").grid(row=1, column=0, padx=5)
+        tk.Entry(master=self._header_frame, textvariable=self._pwd).grid(row=1, column=1, padx=5)
+
+        tk.Button(master=self._middle_frame, text="登录").grid(row=0, column=0, padx=5)
+        tk.Button(master=self._middle_frame, text="退出").grid(row=0, column=1, padx=5)
+
+        tk.Text(master=self._bottom_frame).grid(row=0, column=1)
+
+    def run(self):
+        self._root.mainloop()
+
+
+    def load_user(self):
+        pass
+
+if __name__ == '__main__':
+    app = Application()
+    app.run()
