@@ -176,6 +176,10 @@ def login_forever(user, pwd, login_type=TELECOM, timeout=5):
         time.sleep(timeout)
 
 
+# 允许导入的内容
+__all__ = (login_forever, login)
+
+
 if __name__ == '__main__':
     username = ""
     password = ""
