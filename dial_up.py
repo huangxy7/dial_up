@@ -158,6 +158,7 @@ def test_connect():
         return False
 
 
+
 def login_forever(user, pwd, login_type=TELECOM, timeout=5):
     """
     登陆，以及轮询是否断线，是则重新连接
@@ -168,12 +169,18 @@ def login_forever(user, pwd, login_type=TELECOM, timeout=5):
     :return:
     """
     while True:
-        if test_connect():
+        try:
+            if test_connect():
+                pass
+            else:
+                login(user, pwd, login_type=login_type)
+        except:
             pass
-        else:
-            login(user, pwd, login_type=login_type)
-
         time.sleep(timeout)
+
+
+# 允许导入的内容
+__all__ = (login_forever, login)
 
 
 # 允许导入的内容
